@@ -13,3 +13,7 @@ def register(db:Session, user: UserBase):
     print(user)
 
     return user
+
+# 회원 목록 조회
+def userlist(db:Session):
+    return db.query(User.mno, User.userid, User.name, User.regdate).all()

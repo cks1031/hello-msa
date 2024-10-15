@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routes import user
+from service.database import create_tales
 
 app = FastAPI()
 
@@ -21,5 +22,7 @@ app.add_middleware(
 
 app.include_router(user.router)
 
+
 if __name__ == '__main__':
+    create_tales()
     uvicorn.run('main:app', port=8000, reload=True)

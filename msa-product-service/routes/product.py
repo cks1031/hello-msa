@@ -1,18 +1,16 @@
-from datetime import datetime
-
 from fastapi import APIRouter
-from pydantic import BaseModel
+from fastapi.params import Depends
+from sqlalchemy.orm import Session
+
+
+from schema.product import ProductBase, Product
+from service.database import get_db
+from service.product import register
 
 router = APIRouter()
 
-class Product(BaseModel):
-    name: str
-    desc: str
-    price: str
-    maker: str
-    regdate: str
-
-@router.post('/product')
-async def new_product(product: Product):
+@router.post('/product', response_model=Product)
+async def new_product(product: ProductBase, db: Session=Depends(get_db)):
     print(product)
-    return {'msg': 'ok'}
+
+    return register(db, product)

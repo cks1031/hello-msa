@@ -21,10 +21,12 @@ regbtn.addEventListener('click', async () => {
             },
             body: JSON.stringify(jsondata)
         })
-        .then(res => { // 서버로의 응답 처리
+        .then((resp) => resp.json()) // 서버로의 응답 처리
+        .then((data) => {
             alert('상품등록 성공!!');
+            console.log(data.pno, data.name, data.regdate);
         }).catch((error) => {
             alert('상품등록 실패!!');
-            console.log(data.detail);
+            console.log(error);
         });
 })

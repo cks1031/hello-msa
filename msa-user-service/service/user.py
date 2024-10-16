@@ -17,3 +17,6 @@ def register(db:Session, user: UserBase):
 # 회원 목록 조회
 def userlist(db:Session):
     return db.query(User.mno, User.userid, User.name, User.regdate).all()
+
+def userone(db:Session, mno: int):
+    return db.query(User).filter(User.mno == mno).first()

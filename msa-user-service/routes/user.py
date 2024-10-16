@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from schema.user import User, UserBase, UserList
 from service.database import get_db
-from service.user import register, userlist
+from service.user import register, userlist, userone
 
 router = APIRouter()
 
@@ -22,3 +22,9 @@ async def list_users(db:Session=Depends(get_db)):
     # UserList 형식의 배열로 재생성
     # return [UserList.from_orm(u) for u in users]
     return [UserList.model_validate(u) for u in users]
+
+@router.get('/user/{mno}', response_model=User)
+async def user_one(mno: int, db:Session=Depends(get_db)):
+    user = userone(db, mno)
+
+    return User.model_validate(user)

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 로그인</title>
+</head>
+<body>
+  <h1>회원 로그인</h1>
+  <form name="loginform">
+    <div>아이디 : <input type="text" name="userid" id="userid"></div>
+    <div>비밀번호 : <input type="password" name="passwd" id="passwd"></div>
+    <div><button type="button" id="loginbtn">로그인</button></div>
+  </form>
+  <hr>
+
+  <h2>마이크로 서비스 기반 로그인</h2>
+  <h3>프론트엔드와 백엔드로 구성된 웹 앱에서 구현 가능한 로그인 방법</h3>
+  <ul>
+      <li>JWT (json web token) 기반 인증<br>
+          로그인 여부를 서버에 저장하지 않아 부하가 적음.
+          토큰 관리에 주의 필요!</li>
+
+      <li>세션 기반 인증<br>
+          로그인 여부를 서버에 저장 서버 부하가 클수 있음.</li>
+
+      <li>OAuth 2.0<br>
+          JWT의 오픈소스 버젼 (업계 표준화), 구현 복잡</li>
+
+      <li>소셜 로그인 (OAuth의 한 형태)<br>
+          기존의 소셜 미디어 계정을 사용해서 로그인 처리,
+          새로운 계정 생성 없이 로그인 가능, 대형 플랫폼이 인증 보증</li>
+
+      <li>2단계 인증(2FA) + JWT<br>
+          인증시 2가지 요소를 이용해서 보안을 강화하는 방식,
+          즉, 비밀번호 외에 다른 보안요소(일회용코드)를 사용해서 인증을 진행,
+          보통, 로그인시 일회용 코드를 sms나 이메일로 전송</li>
+
+  </ul>
+
+  <script src="/js/userlogin.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express();
-var client_id = 'aNhaRG9m3MSxL_Ad8rdi'; // 'YOUR_CLIENT_ID'
-var client_secret = '1irQoQH_RG'; // 'YOUR_CLIENT_SECRET'
+var client_id = 'YOUR_CLIENT_ID'; // 'YOUR_CLIENT_ID'
+var client_secret = YOUR_CLIENT_SECRET'; // 'YOUR_CLIENT_SECRET'
 var state = "RANDOM_STATE";
 var redirectURI = encodeURI("http://127.0.0.1:3000//api/callback"); // "YOUR_CALLBACK_URL"
 var api_url = "";

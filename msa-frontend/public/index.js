@@ -51,4 +51,14 @@ router.get('/product/:pno', function(req, res, next) {
   res.sendFile(__dirname + '/views/productone.html')
 });
 
+/* naver api login */
+router.get('/login/naver', function(req, res, next) {
+  res.sendFile(__dirname + '/views/naverlogin.html')
+});
+
+/* naver api callback */
+router.get('/callback/naver', function(req, res, next) {
+  res.sendFile(__dirname + '/views/callbacknaver.html')
+});
+
 module.exports = router;

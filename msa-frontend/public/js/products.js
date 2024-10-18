@@ -33,20 +33,23 @@ const displayproductList = (products) => {
         html += `<li>
             상품이름 : <a href="/product/${p.pno}">${p.name}</a>,
             상품가격 : ${p.price},
-            상품등록일 : ${p.regdate}
+            상품등록일 : ${p.regdate},
             [<a href="javascript:pmodify('${p.pno}')">수정</a>],
-            [<a href="javascript:predify('${p.pno}')">삭제</a>],            
+            [<a href="javascript:premove('${p.pno}')">삭제</a>]            
         </li>`;
     }
     html += '</ul>';
 
     productlist.innerHTML = html;
 };
+
+// 상품 데이터 수정하기
 const pmodify = (pno) => {
     alert('수정되었습니다!');
 };
 
-const predify = async (pno) => {
+// 상품 데이터 삭제하기
+const premove = async (pno) => {
     if (!confirm('정말로 삭제하시겠습니까?')) return;
     let url = `http://127.0.0.1:8050/product/${pno}`;
     const res = await fetch(url, {method: 'delete'});

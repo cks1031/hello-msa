@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 
 from schema.product import ProductBase, Product, ProductList
 from service.database import get_db
-from service.product import register, productlist, productone
+from service.product import register, productlist, productone, productdelete
 
 router = APIRouter()
 
@@ -32,3 +32,9 @@ async def product_one(pno: int, db: Session=Depends(get_db)):
         raise HTTPException(404, 'Product not found!!')
 
     return Product.model_validate(product)
+
+@router.delete('/product/{pno}', response_model=int)
+async def product_delete(pno: int, db: Session=Depends(get_db)):
+    result = productdelete(db, pno)
+
+    return result

@@ -51,6 +51,13 @@ router.get('/product/:pno', function(req, res, next) {
   res.sendFile(__dirname + '/views/productone.html')
 });
 
+/* product update */
+router.get('/product_put/:pno', function(req, res, next) {
+  res.sendFile(__dirname + '/views/product_put.html')
+});
+
+// ---------------------------------------------------
+
 /* naver api login */
 router.get('/login/naver', function(req, res, next) {
   res.sendFile(__dirname + '/views/naverlogin.html')

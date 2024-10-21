@@ -45,7 +45,8 @@ const displayproductList = (products) => {
 
 // 상품 데이터 수정하기
 const pmodify = (pno) => {
-    alert('수정되었습니다!');
+    let url = `http://127.0.0.1:3000/product_put/${pno}`;
+    location.href = url;
 };
 
 // 상품 데이터 삭제하기

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-frontend-deploy
+  labels:
+    app: msa-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msa-frontend
+  template:
+    metadata:
+      name: msa-frontend
+      labels:
+        app: msa-frontend
+    spec:
+      containers:
+        - name: msa-frontend
+          image: nanakia1031/msa-frontend
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+           - name: USER_SRV_URL
+             value: 192.168.56.1:31231
+           - name: PRODUCT_SRV_URL
+             value: 192.168.56.1:31232
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-usersrv-deploy
+  labels:
+    app: msa-usersrv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msa-usersrv
+  template:
+    metadata:
+      name: msa-usersrv
+      labels:
+        app: msa-usersrv
+    spec:
+      containers:
+        - name: msa-usersrv
+          image: nanakia1031/msa-userservice
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          env:
+            - name: CORS_ORIGINS
+              value: http://192.168.56.1:31230

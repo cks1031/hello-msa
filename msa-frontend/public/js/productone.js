@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 const getProductOne = async (pno) => {
-    let url = `http://127.0.0.1:8050/product/${pno}`;
+    let url = `http://${sessionStorage.getItem('productsrvURL')}:8050/product/${pno}`;
     const res = await fetch(url);
     if (res.status === 404) {
         location.href = '/notfound';

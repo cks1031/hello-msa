@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 const getUserOne = async (mno) => {
-    let url = `http://127.0.0.1:8000/user/${mno}`;
+    let url = `http://${sessionStorage.getItem('usersrvURL')}/user/${mno}`;
     const res = await fetch(url);
     if (res.status === 404) {
         location.href = '/notfound';

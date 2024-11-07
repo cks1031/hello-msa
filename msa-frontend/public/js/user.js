@@ -12,7 +12,7 @@ regbtn.addEventListener('click', async () => {
     });
     console.log(jsondata);
 
-    const res = await fetch('http://127.0.0.1:8000/user',
+    const res = await fetch(`http://${sessionStorage.getItem('usersrvURL')}/user`,
         {
             method: 'POST',
             headers: {

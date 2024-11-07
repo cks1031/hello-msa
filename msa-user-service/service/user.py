@@ -26,3 +26,15 @@ def userlist(db:Session):
 
 def userone(db:Session, mno: int):
     return db.query(User).filter(User.mno == mno).first()
+
+def userdelete(db:Session, mno: int):
+
+    user =  db.query(User).filter(User.mno == mno).first()
+
+    if user:
+        db.delete(user)
+        db.commit()
+    else:
+        return None
+
+    return 1

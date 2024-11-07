@@ -11,7 +11,7 @@ window.addEventListener('load', async () => {
 });
 // 상품 데이터 가져오기
 const getproductList = async () => {
-    let url = 'http://127.0.0.1:8050/products';
+    let url = `http://${sessionStorage.getItem('productsrvURL')}:8050/products`;
     const res = await fetch(url);
     if (res.ok) {
         const data = await res.json();

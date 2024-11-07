@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+// REST API 서버 주소 등록
+const usersrvURL = process.env.USER_SRV_URL || '127.0.0.1';
+const productsrvURL = process.env.PRODUCT_SRV_URL || '127.0.0.1';
+
 /* 404 not found */
 router.get('/notfound', function(req, res, next) {
   res.sendFile(__dirname + '/views/notfound.html')
@@ -8,7 +12,8 @@ router.get('/notfound', function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile(__dirname + '/views/index.html')
+  // res.sendFile(__dirname + '/views/index.html')
+  res.render('index', {usersrvURL:usersrvURL, productsrvURL:productsrvURL, layout: false});
 });
 
 /* user registration */

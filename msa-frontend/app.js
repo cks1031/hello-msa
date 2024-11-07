@@ -3,12 +3,21 @@ let express = require('express');
 let path = require('path');
 // nodejs에서 제공하는 세션관리 패키지
 var session = require('express-session')
+// 환경변수 설정을 위해 템플릿 엔진 지정
+const handlebars = require('express-handlebars')
+
 let port = 3000
 
 let indexRouter = require('./public/index');
 let naverRouter = require('./public/naver');
 
 let app = express();
+
+// handlebars 설정
+const hbs = handlebars.create({})
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'public/handlebars'));
 
 // session 설정
 // resave, saveUninitialized - 로그인하지 않은 클라이언트 세션은 저장 X

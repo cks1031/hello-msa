@@ -2,13 +2,13 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>마이크로 서비스 실습</title>
+    <title>마이크로 서비스 실습 - handlebars</title>
 </head>
 <body>
   <h1>마이크로 서비스 실습</h1>
   <div><a href="/user">회원가입</a></div>
   <div><a href="/users">회원목록 조회</a></div>
-  <div><a href="/loginuser">회원로그인</a></div>
+  <div><a href="http://127.0.0.1:3000/loginuser">회원로그인</a></div>
   <div><a href="/secure">보안 페이지 접근 (JWT)</a></div>
   <div><a href="/secure2">보안 페이지 접근2 (naver login api)</a></div>
 
@@ -18,6 +18,11 @@
   <hr>
   <div><a href="/login/naver">네이버API를 이용한 로그인</a></div>
   <div><a href="/api/naver">네이버API를 이용한 로그인 2</a></div>
+
+  <script>
+      sessionStorage.setItem('usersrvURL','{{usersrvURL}}');
+      sessionStorage.setItem('productsrvURL','{{productsrvURL}}');
+  </script>
 
 </body>
 </html>

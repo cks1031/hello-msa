@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from schema.user import User, UserBase, UserList, Token, UserLogin
 from service.auth import userlogin
 from service.database import get_db
-from service.user import register, userlist, userone
+from service.user import register, userlist, userone, userdelete
 
 router = APIRouter()
 
@@ -44,3 +44,9 @@ async def user_login(login: UserLogin, db:Session=Depends(get_db)):
     if token is None:
         raise HTTPException(401,'로그인 실패! - 아이디나 비밀번호가 틀려요!')
     return token
+
+@router.delete('/user/{mno}', response_model=int)
+async def user_delete(mno: int, db: Session=Depends(get_db)):
+    result = userdelete(db, mno)
+
+    return result
